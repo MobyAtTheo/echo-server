@@ -19,6 +19,9 @@ print("Server says: {}".format(received_message.decode()))
 client_socket.close()
 """
 
+import datetime
+time_now = datetime.datetime.timestamp(datetime.datetime.now())
+time_start = datetime.datetime.timestamp(datetime.datetime.now())
 
 
 def client(msg, log_buffer=sys.stderr):
@@ -54,7 +57,8 @@ def client(msg, log_buffer=sys.stderr):
         #
         #       Log each chunk you receive.  Use the print statement below to
         #       do it. This will help in debugging problems
-        chunk = ''
+        # chunk = ''
+        chunk = sock.recv(4096)
         print('received "{0}"'.format(chunk.decode('utf8')), file=log_buffer)
     finally:
         # TODO: after you break out of the loop receiving echoed chunks from
@@ -71,8 +75,8 @@ if __name__ == '__main__':
         print(usage, file=sys.stderr)
         sys.exit(1)
 
-    log_buffer = open('./log_buffer', 'w+')
-    log_buffer.write('date: append')
+    log_buffer = open('./log_buffer', 'a')
+    log_buffer.write( str(time_start) + " : append\n")
 
     msg = sys.argv[1]
     client(msg)

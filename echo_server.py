@@ -57,7 +57,13 @@ def server(log_buffer=sys.stderr):
             #       the client so we can report it below.  Replace the
             #       following line with your code. It is only here to prevent
             #       syntax errors
-            conn, addr = ('foo', ('bar', 'baz'))
+            # conn, addr = ('foo', ('bar', 'baz'))
+            conn, addr = sock.accept()
+            ### buffer_size = 4096 # change to 16 later (wip)
+            ### received_message = conn.recv(buffer_size)
+            ### data = conn.recv(buffer_size)
+
+
             try:
                 print('connection - {0}:{1}'.format(*addr), file=log_buffer)
 
@@ -70,7 +76,10 @@ def server(log_buffer=sys.stderr):
                     #       following line with your code.  It's only here as
                     #       a placeholder to prevent an error in string
                     #       formatting
-                    data = b''
+                    # data = b''
+                    buffer_size = 4096 # change to 16 later (wip)
+                    ### received_message = conn.recv(buffer_size)
+                    data = conn.recv(buffer_size)
                     print('received "{0}"'.format(data.decode('utf8')))
 
                     # TODO: Send the data you received back to the client, log
