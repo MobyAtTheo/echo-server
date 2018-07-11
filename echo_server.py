@@ -77,7 +77,7 @@ def server(log_buffer=sys.stderr):
                     #       a placeholder to prevent an error in string
                     #       formatting
                     # data = b''
-                    buffer_size = 4096 # change to 16 later (wip)
+                    buffer_size = 16 # change to 16 later (wip)
                     ### received_message = conn.recv(buffer_size)
                     data = conn.recv(buffer_size)
                     print('received "{0}"'.format(data.decode('utf8')))
