@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from echo_client import client
 import socket
 import unittest
