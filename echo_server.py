@@ -24,6 +24,9 @@ print("Client says: {}".format(received_message.decode()))
 connection.sendall("message received".encode('utf8'))
 """
 def server(log_buffer=sys.stderr):
+
+    BUF_SIZE = 16
+
     # set an address for our server
     address = ('127.0.0.1', 12000)
     # TODO: Replace the following line with your code which will instantiate
@@ -77,9 +80,9 @@ def server(log_buffer=sys.stderr):
                     #       a placeholder to prevent an error in string
                     #       formatting
                     # data = b''
-                    buffer_size = 16 # change to 16 later (wip)
+                    # buffer_size = 16 # change to 16 later (wip)
                     ### received_message = conn.recv(buffer_size)
-                    data = conn.recv(buffer_size)
+                    data = conn.recv(BUF_SIZE)
                     print('received "{0}"'.format(data.decode('utf8')))
 
                     # TODO: Send the data you received back to the client, log
@@ -96,6 +99,14 @@ def server(log_buffer=sys.stderr):
                     # remember then ask your classmates or instructor for a clue.
                     # :)
                     time.sleep(1)
+
+                    ### add code for breakout conditions
+                    """
+                    1. buffer not filled to complete
+                    2. eof
+                    """
+                    if len(data) < 16:
+                        break
 
             finally:
                 # TODO: When the inner loop exits, this 'finally' clause will
