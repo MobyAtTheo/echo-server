@@ -75,10 +75,5 @@ if __name__ == '__main__':
         print(usage, file=sys.stderr)
         sys.exit(1)
 
-    log_buffer = open('./log_buffer', 'a')
-    log_buffer.write( str(time_start) + " : append\n")
-
     msg = sys.argv[1]
     client(msg)
-
-    log_buffer.close()
