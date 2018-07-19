@@ -98,7 +98,7 @@ def server(log_buffer=sys.stderr):
                     # message is a trick we learned in the lesson: if you don't
                     # remember then ask your classmates or instructor for a clue.
                     # :)
-                    time.sleep(1)
+                    # debug time.sleep(1)
 
                     ### add code for breakout conditions
                     """

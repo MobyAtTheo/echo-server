@@ -71,6 +71,11 @@ def client(msg, log_buffer=sys.stderr):
                 print ("[*] exiting loop")
                 break
 
+            if len(received_message) > 2:
+                #raise "Too many bytes, exiting."
+                print("[-] Too many bytes, exiting.")
+                break
+
 
     finally:
         # TODO: after you break out of the loop receiving echoed chunks from
